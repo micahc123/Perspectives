@@ -1,0 +1,41 @@
+.aboutContainer {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #333;
+  }
+  
+  .aboutText {
+    flex: 1;
+    margin-right: 20px;
+    color: #666;
+  }
+  
+  .aboutText h1 {
+    margin-top: -40px;
+    color: white;
+  }
+  
+  .aboutText p {
+    margin-bottom: 1px;
+    font-size: 18px;
+    line-height: 1.6;
+    color : white;
+  }
+  
+  .aboutImage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .aboutImage img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
