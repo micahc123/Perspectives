@@ -1,0 +1,33 @@
+.game-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .game-container h1 {
+    font-size: 30px;
+  }
+  
+  .paths {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px; /* Move the paths down */
+  }
+  
+  .path {
+    text-align: center;
+  }
+  
+  .path-image {
+    width: 150px;
+    height: 300px;
+    display: block;
+    margin: 0 auto 20px;
+  }
+  
+  .btn-lg {
+    padding: 20px 30; 
+    font-size: 40px;
+    width: 100%; 
+    max-width: 300; 
+    margin: 0 auto; 
+  }
