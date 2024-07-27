@@ -10,7 +10,7 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   const pages = [
     {
       title: 'Background Info',
-      content: <PanoramaViewer imageUrl="/panorama1.jpg" />, // Directly reference the image in the public folder
+      content: <PanoramaViewer imageUrl="/panorama1.jpg" />, 
     },
     {
       title: 'Extracurriculars',
