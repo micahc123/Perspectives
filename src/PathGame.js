@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PanoramaView from './PanoramaView';
+import PanoramaViewer from './PanoramaViewer';
 import CollegeMiniGame from './CollegeMiniGame';
 import './PathGame.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; 
@@ -10,14 +10,14 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   const pages = [
     {
       title: 'Background Info',
-      content: <PanoramaView images={path.panoramaImages} />,
+      content: <PanoramaViewer imageUrl="/panorama1.jpg" />, // Directly reference the image in the public folder
     },
     {
-      title: 'Extracuricculars',
+      title: 'Extracurriculars',
       content: <p>{path.studyInfo}</p>,
     },
     {
-      title: 'Hobbies ',
+      title: 'Hobbies',
       content: <p>{path.interestingInfo}</p>,
     },
     {
@@ -55,16 +55,19 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
       </div>
       <div className="navigation-buttons">
         {pageIndex > 0 && (
-          <button onClick={handlePrev} className="btn btn-secondary">
+          <button onClick={handlePrev} className="nav-button">
             <FaArrowLeft /> Previous
           </button>
         )}
-        {pageIndex < pages.length - 1 && (
-          <button onClick={handleNext} className="btn btn-secondary btn-next">
-            Next <FaArrowRight />
-          </button>
-        )}
       </div>
+      {pageIndex < pages.length - 1 && (
+        <button onClick={handleNext} className="nav-button btn-next">
+          Next <FaArrowRight />
+        </button>
+      )}
+      {pageIndex === 0 && (
+        <button onClick={onBack} className="back-button">Back to Paths</button>
+      )}
     </div>
   );
 };

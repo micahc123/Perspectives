@@ -1,6 +1,8 @@
 .path-game {
   text-align: center;
   padding: 20px;
+  position: relative;
+  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
 }
 
 .page-content {
@@ -17,19 +19,33 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  position: absolute;
-  bottom: 20px;
-  left: 0;
+  position: relative; /* Change to relative for normal flow */
   padding: 0 20px;
 }
-
 
 .nav-button {
   padding: 10px 20px;
   font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+.btn-next {
+  position: fixed; /* Fix position to bottom right */
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  z-index: 1000; /* Ensure button is above other content */
+}
 
-.navigation-buttons .btn-next {
-  margin-left: auto;
+.back-button {
+  position: absolute; /* Keep the back button in its original position */
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

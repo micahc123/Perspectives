@@ -1,0 +1,9 @@
+.panorama-container {
+    width: 100%;
+    height: 100vh;
+    cursor: grab;
+  }
+  
+  .panorama-container:active {
+    cursor: grabbing;
+  }
