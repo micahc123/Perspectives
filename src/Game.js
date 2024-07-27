@@ -1,17 +1,52 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import Path from './Path';
+import PanoramaView from './PanoramaView';
 import './Game.css';
 
 const pathsData = [
-  { name: 'Path 1', image: 'path1.jpg', description: 'Description for Path 1', ethnicity: 'Ethnicity 1' },
-  { name: 'Path 2', image: 'path2.jpg', description: 'Description for Path 2', ethnicity: 'Ethnicity 2' },
-  { name: 'Path 3', image: 'path3.jpg', description: 'Description for Path 3', ethnicity: 'Ethnicity 3' },
+  { 
+    name: 'Path 1', 
+    image: '/images/path1.jpg', 
+    description: 'Description for Path 1', 
+    ethnicity: 'Ethnicity 1',
+    panoramaImages: [
+      '/images/path1_view1.jpg',
+      '/images/path1_view2.jpg',
+      '/images/path1_view3.jpg',
+      '/images/path1_view4.jpg'
+    ]
+  },
+  { 
+    name: 'Path 2', 
+    image: '/images/path2.jpg', 
+    description: 'Description for Path 2', 
+    ethnicity: 'Ethnicity 2',
+    panoramaImages: [
+      '/images/path2_view1.jpg',
+      '/images/path2_view2.jpg',
+      '/images/path2_view3.jpg',
+      '/images/path2_view4.jpg'
+    ]
+  },
+  { 
+    name: 'Path 3', 
+    image: '/images/path3.jpg', 
+    description: 'Description for Path 3', 
+    ethnicity: 'Ethnicity 3',
+    panoramaImages: [
+      '/images/path3_view1.jpg',
+      '/images/path3_view2.jpg',
+      '/images/path3_view3.jpg',
+      '/images/path3_view4.jpg'
+    ]
+  },
 ];
 
 function Game() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEthnicity, setSelectedEthnicity] = useState('');
+  const [selectedPath, setSelectedPath] = useState(null);
 
   const titleAnimation = useSpring({
     from: { transform: 'translateY(-100%)', opacity: 0 },
@@ -29,6 +64,10 @@ function Game() {
     path.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (selectedEthnicity === '' || path.ethnicity === selectedEthnicity)
   );
+
+  const handlePathClick = (path) => {
+    setSelectedPath(path);
+  };
 
   return (
     <div className="game-header">
@@ -50,18 +89,23 @@ function Game() {
           <option value="Ethnicity 3">American</option>
         </select>
       </div>
-      <div className="paths">
-        {filteredPaths.map((path, index) => (
-          <Path 
-            key={index} 
-            name={path.name} 
-            image={path.image} 
-            description={path.description} 
-            ethnicity={path.ethnicity} 
-            animation={pathAnimation} 
-          />
-        ))}
-      </div>
+      {selectedPath ? (
+        <PanoramaView images={selectedPath.panoramaImages} />
+      ) : (
+        <div className="paths">
+          {filteredPaths.map((path, index) => (
+            <Path 
+              key={index} 
+              name={path.name} 
+              image={path.image} 
+              description={path.description} 
+              ethnicity={path.ethnicity} 
+              animation={pathAnimation}
+              onClick={() => handlePathClick(path)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
