@@ -1,0 +1,41 @@
+.path {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #28233e25;
+    border-radius: 8px;
+    background-color: #b4b4b825;
+    width: 100%; 
+    margin: 0 auto 20px; 
+  }
+  
+  .path-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .path-description {   
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .path-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .path-image {
+    max-width: 150px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-lg {
+    padding: 10px 20px; 
+    font-size: 16px;
+    margin-left: 20px;
+  }

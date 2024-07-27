@@ -1,33 +1,55 @@
-.game-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .game-container h1 {
-    font-size: 30px;
-  }
-  
-  .paths {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 100px; /* Move the paths down */
-  }
-  
-  .path {
-    text-align: center;
-  }
-  
-  .path-image {
-    width: 150px;
-    height: 300px;
-    display: block;
-    margin: 0 auto 20px;
-  }
-  
-  .btn-lg {
-    padding: 20px 30; 
-    font-size: 40px;
-    width: 100%; 
-    max-width: 300; 
-    margin: 0 auto; 
-  }
+.game-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.game-header h1 {
+  font-size: 30px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-bar select {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.paths {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  max-height: 500px; /* Adjust as needed */
+  padding: 10px;
+}
+
+.path {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.path-image {
+  width: 150px;
+  height: 300px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.btn-lg {
+  padding: 20px 30px; 
+  font-size: 40px;
+  width: 100%; 
+  max-width: 300px; 
+  margin: 0 auto; 
+}
