@@ -26,26 +26,74 @@
 .nav-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.8); 
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .btn-next {
-  position: fixed; 
-  bottom: 20px; 
-  right: 20px; 
-  z-index: 1000; 
+  position: fixed; /* Fix position to bottom right */
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  z-index: 1000; /* Ensure button is above other content */
 }
 
 .back-button {
-  position: absolute; 
+  position: absolute; /* Keep the back button in its original position */
   top: 20px;
   left: 20px;
   padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.8); 
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* ... (keep your existing styles) ... */
+
+/* Styles for the pop-down notification */
+.pop-down {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+  z-index: 2000;
+}
+
+.pop-down.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pop-down h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.pop-down hr {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.pop-down p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Ensure the page-content (which contains the panorama) is positioned relatively */
+.page-content {
+  position: relative;
+  margin: 20px 0;
+  height: calc(100vh - 100px); /* Adjust based on your layout */
 }
