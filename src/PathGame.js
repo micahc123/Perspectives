@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PanoramaView from './PanoramaView';
 import CollegeMiniGame from './CollegeMiniGame';
 import './PathGame.css';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; 
 
 const PathGame = ({ path, onBack, onMainMenu }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -53,8 +54,16 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
         {pages[pageIndex].content}
       </div>
       <div className="navigation-buttons">
-        <button onClick={handlePrev} className="nav-button">Previous</button>
-        <button onClick={handleNext} className="nav-button">Next</button>
+        {pageIndex > 0 && (
+          <button onClick={handlePrev} className="btn btn-secondary">
+            <FaArrowLeft /> Previous
+          </button>
+        )}
+        {pageIndex < pages.length - 1 && (
+          <button onClick={handleNext} className="btn btn-secondary btn-next">
+            Next <FaArrowRight />
+          </button>
+        )}
       </div>
     </div>
   );

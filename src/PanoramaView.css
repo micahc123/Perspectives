@@ -1,18 +1,14 @@
 .panorama-view {
   display: flex;
-  width: 100%;
-  height: 100vh;
+  width: 80%; /* Adjust width as needed */
+  height: 60vh; /* Adjust height as needed */
   overflow: hidden;
-}
-
-.image-container {
-  position: relative;
-  width: 50%; /* Adjust width as needed */
-  height: 100%;
+  position: relative; /* Ensure child elements are positioned correctly */
+  margin: auto; /* Center the panorama view */
 }
 
 .panorama-image {
-  position: absolute;
+  position: absolute; /* Ensure images are positioned correctly */
   top: 0;
   left: 0;
   width: 100%;
@@ -37,13 +33,4 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-}
-
-.description {
-  width: 50%; /* Adjust width as needed */
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
 }

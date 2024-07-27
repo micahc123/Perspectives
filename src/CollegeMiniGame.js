@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Confetti from 'react-confetti';
-import './PathGame.css';
+import './CollegeMiniGame.css';
 
 const CollegeMiniGame = ({ colleges }) => {
   const [revealed, setRevealed] = useState({});
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
 
   const handleReveal = (collegeName) => {
     setRevealed((prev) => ({ ...prev, [collegeName]: true }));
@@ -18,7 +23,9 @@ const CollegeMiniGame = ({ colleges }) => {
             {revealed[college.name] && (
               <>
                 <p>{college.status === 'accepted' ? 'Accepted!' : 'Rejected'}</p>
-                {college.status === 'accepted' && <Confetti />}
+                {college.status === 'accepted' && (
+                  <Confetti width={dimensions.width} height={dimensions.height} />
+                )}
               </>
             )}
           </div>
