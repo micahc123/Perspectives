@@ -1,50 +1,62 @@
 [
-    {
-      "name": "Path 1",
-      "image": "/images/path1.jpg",
-      "description": "Description for Path 1",
-      "ethnicity": "Ethnicity 1",
-      "panoramaImages": [
-        "/images/path1_view1.jpg",
-        "/images/path1_view2.jpg",
-        "/images/path1_view3.jpg",
-        "/images/path1_view4.jpg"
-      ],
-      "studyInfo": "Study info for Path 1",
-      "interestingInfo": "Interesting info for Path 1",
-      "collegeInfo": "College info for Path 1",
-      "currentInfo": "Current info for Path 1"
-    },
-    {
-      "name": "Path 2",
-      "image": "/images/path2.jpg",
-      "description": "Description for Path 2",
-      "ethnicity": "Ethnicity 2",
-      "panoramaImages": [
-        "/images/path2_view1.jpg",
-        "/images/path2_view2.jpg",
-        "/images/path2_view3.jpg",
-        "/images/path2_view4.jpg"
-      ],
-      "studyInfo": "Study info for Path 2",
-      "interestingInfo": "Interesting info for Path 2",
-      "collegeInfo": "College info for Path 2",
-      "currentInfo": "Current info for Path 2"
-    },
-    {
-      "name": "Path 3",
-      "image": "/images/path3.jpg",
-      "description": "Description for Path 3",
-      "ethnicity": "Ethnicity 3",
-      "panoramaImages": [
-        "/images/path3_view1.jpg",
-        "/images/path3_view2.jpg",
-        "/images/path3_view3.jpg",
-        "/images/path3_view4.jpg"
-      ],
-      "studyInfo": "Study info for Path 3",
-      "interestingInfo": "Interesting info for Path 3",
-      "collegeInfo": "College info for Path 3",
-      "currentInfo": "Current info for Path 3"
-    }
-  ]
+  {
+    "name": "Path 1",
+    "image": "/images/path1.jpg",
+    "description": "Description for Path 1",
+    "ethnicity": "Ethnicity 1",
+    "panoramaImages": [
+      "/images/path1_view1.jpg",
+      "/images/path1_view2.jpg",
+      "/images/path1_view3.jpg",
+      "/images/path1_view4.jpg"
+    ],
+    "studyInfo": "Study info for Path 1",
+    "interestingInfo": "Interesting info for Path 1",
+    "collegeInfo": "College info for Path 1",
+    "currentInfo": "Current info for Path 1",
+    "colleges": [
+      { "name": "Harvard", "status": "accepted" },
+      { "name": "Stanford", "status": "rejected" }
+    ]
+  },
+  {
+    "name": "Path 2",
+    "image": "/images/path2.jpg",
+    "description": "Description for Path 2",
+    "ethnicity": "Ethnicity 2",
+    "panoramaImages": [
+      "/images/path2_view1.jpg",
+      "/images/path2_view2.jpg",
+      "/images/path2_view3.jpg",
+      "/images/path2_view4.jpg"
+    ],
+    "studyInfo": "Study info for Path 2",
+    "interestingInfo": "Interesting info for Path 2",
+    "collegeInfo": "College info for Path 2",
+    "currentInfo": "Current info for Path 2",
+    "colleges": [
+      { "name": "College C", "status": "accepted" },
+      { "name": "College D", "status": "rejected" }
+    ]
+  },
+  {
+    "name": "Path 3",
+    "image": "/images/path3.jpg",
+    "description": "Description for Path 3",
+    "ethnicity": "Ethnicity 3",
+    "panoramaImages": [
+      "/images/path3_view1.jpg",
+      "/images/path3_view2.jpg",
+      "/images/path3_view3.jpg",
+      "/images/path3_view4.jpg"
+    ],
+    "studyInfo": "Study info for Path 3",
+    "interestingInfo": "Interesting info for Path 3",
+    "collegeInfo": "College info for Path 3",
+    "currentInfo": "Current info for Path 3",
+    "colleges": [
+      { "name": "College E", "status": "accepted" },
+      { "name": "College F", "status": "rejected" }
+    ]
+  }
+]

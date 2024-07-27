@@ -1,26 +1,69 @@
 .path-game {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .back-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-  
-  .page-content {
-    margin: 20px 0;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .nav-button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
+  text-align: center;
+  padding: 20px;
+}
+
+.page-content {
+  margin: 20px 0;
+}
+
+.description-text {
+  margin-bottom: 20px;
+  font-size: 50px;
+  color: #333;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.college-mini-game {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.college-envelope {
+  border: 1px solid #ddd;
+  padding: 15px;
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.college-envelope:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.college-envelope p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}

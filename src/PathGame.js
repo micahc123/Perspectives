@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PanoramaView from './PanoramaView';
+import CollegeMiniGame from './CollegeMiniGame';
 import './PathGame.css';
 
 const PathGame = ({ path, onBack, onMainMenu }) => {
@@ -11,19 +12,19 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
       content: <PanoramaView images={path.panoramaImages} />,
     },
     {
-      title: 'Where They Went to Study',
+      title: 'Extracuricculars',
       content: <p>{path.studyInfo}</p>,
     },
     {
-      title: 'What They Found Interesting',
+      title: 'Hobbies ',
       content: <p>{path.interestingInfo}</p>,
     },
     {
-      title: 'Where They Went to College',
-      content: <p>{path.collegeInfo}</p>,
+      title: 'College Admissions Day!',
+      content: <CollegeMiniGame colleges={path.colleges} description={path.collegeDescription} />,
     },
     {
-      title: 'What They Are Doing Now',
+      title: 'Current Career Path',
       content: <p>{path.currentInfo}</p>,
     },
     {
