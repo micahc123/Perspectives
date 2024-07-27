@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { useNavigate } from 'react-router-dom';
 import Path from './Path';
 import PathGame from './PathGame';
-import Homepage from './Homepage';
 import './Game.css';
 
 function Game() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEthnicity, setSelectedEthnicity] = useState('');
   const [selectedPath, setSelectedPath] = useState(null);
-  const [showMainMenu, setShowMainMenu] = useState(false);
   const [pathsData, setPathsData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/pathsData.json')
@@ -45,16 +45,14 @@ function Game() {
   };
 
   const handleMainMenu = () => {
-    setShowMainMenu(true);
+    navigate('/');
   };
-
-  if (showMainMenu) {
-    return <Homepage />;
-  }
 
   return (
     <div className="game-header">
-      <animated.h1 style={titleAnimation}>Look through the lens of another student.</animated.h1>
+      {!selectedPath && (
+        <animated.h1 style={titleAnimation}>Look through the lens of another student.</animated.h1>
+      )}
       {!selectedPath && (
         <div className="search-bar">
           <input 

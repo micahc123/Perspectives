@@ -47,7 +47,6 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
 
   return (
     <div className="path-game">
-      <button onClick={onBack} className="back-button">Back</button>
       <h2>{pages[pageIndex].title}</h2>
       <div className="page-content">
         {pages[pageIndex].content}
