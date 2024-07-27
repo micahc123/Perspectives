@@ -1,0 +1,26 @@
+.path-game {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  .page-content {
+    margin: 20px 0;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
