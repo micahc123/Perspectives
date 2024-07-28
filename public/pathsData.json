@@ -1,16 +1,16 @@
 [
   {
-    "name": "Path 1",
+    "name": "Carlos",
     "image": "/images/path1.jpg",
-    "description": "Description for Path 1",
-    "ethnicity": "Ethnicity 1",
+    "description": "",
+    "ethnicity": "Mexican",
     "panoramaImages": [
       "/images/path1_view1.jpg",
       "/images/path1_view2.jpg",
       "/images/path1_view3.jpg",
       "/images/path1_view4.jpg"
     ],
-    "studyInfo": "Study info for Path 1",
+    "studyInfo": "As I was sitting in the classroom, waiting for class to start, I looked to my right and saw a couple of kids gathered around, whispering in their silent voices, laughing and staring at me with eyes of judgment. “Look at what he’s wearing” one would say, “I heard his parents never come home” another would mention. To me, this is nothing. I hear this stuff on a daily basis anyway. I know I don’t fit in here…",
     "interestingInfo": "Interesting info for Path 1",
     "collegeInfo": "College info for Path 1",
     "currentInfo": "Current info for Path 1",

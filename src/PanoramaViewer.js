@@ -20,27 +20,22 @@ const PanoramaViewer = ({ imageUrl }) => {
     const width = container.clientWidth;
     const height = container.clientHeight;
 
-   
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-   
     const camera = new THREE.PerspectiveCamera(75, width / height, 1, 1100);
     camera.target = new THREE.Vector3(0, 0, 0);
     cameraRef.current = camera;
 
-    
     const renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    
     const geometry = new THREE.SphereGeometry(500, 60, 40);
     geometry.scale(-1, 1, 1);
 
-    
     const loader = new THREE.TextureLoader();
     const texture = loader.load(imageUrl);
     const material = new THREE.MeshBasicMaterial({ map: texture });
@@ -48,7 +43,6 @@ const PanoramaViewer = ({ imageUrl }) => {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    
     const animate = () => {
       requestAnimationFrame(animate);
       update();
@@ -73,8 +67,21 @@ const PanoramaViewer = ({ imageUrl }) => {
 
     animate();
 
+    const handleResize = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     // Clean up
     return () => {
+      window.removeEventListener('resize', handleResize);
       container.removeChild(renderer.domElement);
     };
   }, [imageUrl]);

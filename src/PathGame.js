@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PanoramaViewer from './PanoramaViewer';
-import CollegeMiniGame from './CollegeMiniGame';
 import './PathGame.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; 
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const PathGame = ({ path, onBack, onMainMenu }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -10,60 +9,38 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   const popDownRef = useRef(null);
 
   const pages = [
+    ...path.panoramaImages.map((imageUrl, index) => ({
+      title: `View ${index + 1}`,
+      content: <PanoramaViewer imageUrl={imageUrl} />,
+      header: `View ${index + 1}`,
+      text: `This is view ${index + 1} of the path.`
+    })),
     {
-      title: 'Background Info',
-      content: <PanoramaViewer imageUrl="/panorama1.jpg" />,
-      header: 'Background Info',
-      text: 'This section provides background information about the student.'
-    },
-    {
-      title: 'Extracurriculars',
-      content: <p>{path.studyInfo}</p>,
-      header: 'Extracurriculars',
-      text: 'This section details the extracurricular activities of the student.'
-    },
-    {
-      title: 'Hobbies',
-      content: <p>{path.interestingInfo}</p>,
-      header: 'Hobbies',
-      text: 'This section covers the hobbies and interests of the student.'
-    },
-    {
-      title: 'College Admissions Day!',
-      content: <CollegeMiniGame colleges={path.colleges} description={path.collegeDescription} />,
-      header: 'College Admissions Day!',
-      text: 'This section simulates the college admissions process.'
-    },
-    {
-      title: 'Current Career Path',
-      content: <p>{path.currentInfo}</p>,
-      header: 'Current Career Path',
-      text: 'This section describes the current career path of the student.'
-    },
-    {
-      title: 'End',
+      title: 'End of Path',
       content: (
         <div>
-          <p>Thank you for exploring this path!</p>
-          <button onClick={onMainMenu} className="main-menu-button">Back to Main Menu</button>
+          <p>You have reached the end of the path.</p>
+          <button onClick={onMainMenu} className="main-menu-button">
+            Back to Main Menu
+          </button>
         </div>
       ),
-      header: 'End',
-      text: 'Thank you for exploring this path!'
-    },
+      header: 'End of Path',
+      text: 'You have reached the end of the path.'
+    }
   ];
 
   useEffect(() => {
     setShowPopDown(false);
-    
+
     if (popDownRef.current) {
       popDownRef.current.style.display = 'none';
       void popDownRef.current.offsetHeight; // Trigger a reflow 
       popDownRef.current.style.display = '';
     }
-    
+
     const showTimer = setTimeout(() => setShowPopDown(true), 50);
-    
+
     return () => {
       clearTimeout(showTimer);
     };
@@ -110,4 +87,4 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   );
 };
 
-export default PathGame;        
+export default PathGame;
