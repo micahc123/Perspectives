@@ -1,12 +1,22 @@
+/* Prevent scrolling on the body and html */
+html, body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+}
+
 .path-game {
   text-align: center;
   padding: 20px;
   position: relative;
   min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+  overflow: hidden; /* Prevent internal scrolling */
 }
 
 .page-content {
   margin: 20px 0;
+  height: calc(100vh - 100px); /* Adjust based on your layout */
+  overflow: hidden; /* Prevent internal scrolling */
 }
 
 .description-text {
@@ -39,18 +49,12 @@
   z-index: 1000; /* Ensure button is above other content */
 }
 
-.back-button {
-  position: absolute; /* Keep the back button in its original position */
-  top: 20px;
-  left: 20px;
-  padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.btn-prev {
+  position: fixed; /* Fix position to bottom left */
+  bottom: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  z-index: 1000; /* Ensure button is above other content */
 }
-
-/* ... (keep your existing styles) ... */
 
 /* Styles for the pop-down notification */
 .pop-down {
@@ -89,11 +93,4 @@
   margin: 0;
   font-size: 14px;
   color: #666;
-}
-
-/* Ensure the page-content (which contains the panorama) is positioned relatively */
-.page-content {
-  position: relative;
-  margin: 20px 0;
-  height: calc(100vh - 100px); /* Adjust based on your layout */
 }

@@ -56,10 +56,9 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   useEffect(() => {
     setShowPopDown(false);
     
-    // Force a reflow before showing the pop-down
     if (popDownRef.current) {
       popDownRef.current.style.display = 'none';
-      void popDownRef.current.offsetHeight; // Trigger a reflow
+      void popDownRef.current.offsetHeight; // Trigger a reflow 
       popDownRef.current.style.display = '';
     }
     
@@ -94,16 +93,16 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
       </div>
       <div className="navigation-buttons">
         {pageIndex > 0 && (
-          <button onClick={handlePrev} className="nav-button">
+          <button onClick={handlePrev} className="nav-button btn-prev">
             <FaArrowLeft /> Previous
           </button>
         )}
+        {pageIndex < pages.length - 1 && (
+          <button onClick={handleNext} className="nav-button btn-next">
+            Next <FaArrowRight />
+          </button>
+        )}
       </div>
-      {pageIndex < pages.length - 1 && (
-        <button onClick={handleNext} className="nav-button btn-next">
-          Next <FaArrowRight />
-        </button>
-      )}
       {pageIndex === 0 && (
         <button onClick={onBack} className="back-button">Back to Paths</button>
       )}
@@ -111,4 +110,4 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   );
 };
 
-export default PathGame;
+export default PathGame;        
