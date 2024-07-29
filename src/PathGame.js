@@ -8,17 +8,24 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   const [showPopDown, setShowPopDown] = useState(false);
   const popDownRef = useRef(null);
 
+  const pageDetails = [
+    { title: "School", header: "School View", text: "This is the school view of the path." },
+    { title: "Home", header: "Home View", text: "This is the home view of the path." },
+    { title: "Work", header: "Work View", text: "This is the work view of the path." },
+    { title: "Reflection", header: "Reflection View", text: "This is the reflection of current life." }
+  ];
+
   const pages = [
     ...path.panoramaImages.map((image, index) => ({
-      title: `View ${index + 1}`,
+      title: pageDetails[index]?.title || `View ${index + 1}`,
       content: (
         <PanoramaViewer
           imageUrl={typeof image === 'string' ? image : image.url}
           interactivePoints={typeof image === 'string' ? [] : image.interactivePoints || []}
         />
       ),
-      header: `View ${index + 1}`,
-      text: `This is view ${index + 1} of the path.`
+      header: pageDetails[index]?.header || `View ${index + 1}`,
+      text: pageDetails[index]?.text || `This is view ${index + 1} of the path.`
     })),
     {
       title: 'End of Path',
