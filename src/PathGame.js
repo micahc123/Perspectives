@@ -9,9 +9,14 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   const popDownRef = useRef(null);
 
   const pages = [
-    ...path.panoramaImages.map((imageUrl, index) => ({
+    ...path.panoramaImages.map((image, index) => ({
       title: `View ${index + 1}`,
-      content: <PanoramaViewer imageUrl={imageUrl} />,
+      content: (
+        <PanoramaViewer
+          imageUrl={typeof image === 'string' ? image : image.url}
+          interactivePoints={typeof image === 'string' ? [] : image.interactivePoints || []}
+        />
+      ),
       header: `View ${index + 1}`,
       text: `This is view ${index + 1} of the path.`
     })),

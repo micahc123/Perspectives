@@ -5,8 +5,19 @@
     "description": "",
     "ethnicity": "Mexican",
     "panoramaImages": [
-      "/images/path1_view1.jpg",
-      "/images/path1_view2.jpg",
+      {
+        "url": "/images/path1_view1.jpg",
+        "interactivePoints": [
+          { "id": 1, "x": 100, "y": 0, "z": 100, "text": "Point 1" },
+          { "id": 2, "x": 50, "y": 0, "z": -100, "text": "Point 2" }
+        ]
+      },
+      {
+        "url": "/images/path1_view2.jpg",
+        "interactivePoints": [
+          { "id": 3, "x": -100, "y": 0, "z": 100, "text": "Point 3" }
+        ]
+      },
       "/images/path1_view3.jpg",
       "/images/path1_view4.jpg"
     ],
@@ -25,7 +36,12 @@
     "description": "Description for Path 2",
     "ethnicity": "Ethnicity 2",
     "panoramaImages": [
-      "/images/path2_view1.jpg",
+      {
+        "url": "/images/path2_view1.jpg",
+        "interactivePoints": [
+          { "id": 4, "x": 200, "y": 0, "z": 200, "text": "Point 4" }
+        ]
+      },
       "/images/path2_view2.jpg",
       "/images/path2_view3.jpg",
       "/images/path2_view4.jpg"
@@ -45,7 +61,12 @@
     "description": "Description for Path 3",
     "ethnicity": "Ethnicity 3",
     "panoramaImages": [
-      "/images/path3_view1.jpg",
+      {
+        "url": "/images/path3_view1.jpg",
+        "interactivePoints": [
+          { "id": 5, "x": 300, "y": 0, "z": 300, "text": "Point 5" }
+        ]
+      },
       "/images/path3_view2.jpg",
       "/images/path3_view3.jpg",
       "/images/path3_view4.jpg"
