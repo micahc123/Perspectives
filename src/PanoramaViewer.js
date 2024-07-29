@@ -17,6 +17,8 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
   const raycasterRef = useRef(new THREE.Raycaster());
   const mouseRef = useRef(new THREE.Vector2());
   const [popups, setPopups] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
 
   const update = useCallback(() => {
     if (!cameraRef.current || !rendererRef.current || !sceneRef.current) return;
@@ -48,6 +50,8 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
 
   useEffect(() => {
     setPopups([]);
+    setIsLoading(true);
+    setLoadingProgress(0);
 
     const container = containerRef.current;
     const width = container.clientWidth;
@@ -70,20 +74,50 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
     geometry.scale(-1, 1, 1);
 
     const loader = new THREE.TextureLoader();
-    const texture = loader.load(imageUrl);
-    const material = new THREE.MeshBasicMaterial({ map: texture });
+    loader.load(
+      imageUrl,
+      (texture) => {
+        const material = new THREE.MeshBasicMaterial({ 
+          map: texture,
+          transparent: true,
+          opacity: 0
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+        // Fade in effect
+        const fadeIn = () => {
+          if (material.opacity < 1) {
+            material.opacity += 0.05;
+            requestAnimationFrame(fadeIn);
+            renderer.render(scene, camera);
+          } else {
+            setIsLoading(false);
+          }
+        };
+        fadeIn();
 
-    interactivePoints.forEach(point => {
-      const pointGeometry = new THREE.SphereGeometry(5, 32, 32);
-      const pointMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-      const pointMesh = new THREE.Mesh(pointGeometry, pointMaterial);
-      pointMesh.position.set(point.x, point.y, point.z);
-      pointMesh.userData = { id: point.id, text: point.text };
-      scene.add(pointMesh);
-    });
+        // Add interactive points
+        interactivePoints.forEach(point => {
+          const pointGeometry = new THREE.SphereGeometry(5, 32, 32);
+          const pointMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+          const pointMesh = new THREE.Mesh(pointGeometry, pointMaterial);
+          pointMesh.position.set(point.x, point.y, point.z);
+          pointMesh.userData = { id: point.id, text: point.text };
+          scene.add(pointMesh);
+        });
+
+        update(); // Initial render
+        animate();
+      },
+      (xhr) => {
+        setLoadingProgress(Math.round((xhr.loaded / xhr.total) * 100));
+      },
+      (error) => {
+        console.error('An error occurred while loading the texture', error);
+        setIsLoading(false);
+      }
+    );
 
     const animate = () => {
       requestAnimationFrame(animate);
@@ -91,9 +125,6 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         update();
       }
     };
-
-    update(); // Initial render
-    animate();
 
     const handleResize = () => {
       const width = container.clientWidth;
@@ -162,44 +193,52 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
   const onClick = (event) => {
     const container = containerRef.current;
     const rect = container.getBoundingClientRect();
-
+  
     mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
+  
     raycasterRef.current.setFromCamera(mouseRef.current, cameraRef.current);
-
+  
     const intersects = raycasterRef.current.intersectObjects(sceneRef.current.children, true);
-
+  
     if (intersects.length > 0) {
       const intersected = intersects[0].object;
       if (intersected.userData.text) {
         const vector = new THREE.Vector3(intersected.position.x, intersected.position.y, intersected.position.z);
         vector.project(cameraRef.current);
-
+  
         const x = (vector.x * 0.5 + 0.5) * container.clientWidth;
         const y = (vector.y * -0.5 + 0.5) * container.clientHeight;
-
+  
         setPopups(prevPopups => {
           const existingPopupIndex = prevPopups.findIndex(popup => popup.id === intersected.userData.id);
           if (existingPopupIndex !== -1) {
+            // If the popup exists, we simply toggle its visibility
             const updatedPopups = [...prevPopups];
             updatedPopups[existingPopupIndex] = {
               ...updatedPopups[existingPopupIndex],
               visible: !updatedPopups[existingPopupIndex].visible,
-              text: intersected.userData.text,
-              x,
-              y,
-              point: intersected.position
             };
             return updatedPopups;
           } else {
+            // If the popup doesn't exist, we create a new one and set it to visible
             return [
               ...prevPopups,
-              { id: intersected.userData.id, visible: true, text: intersected.userData.text, x, y, point: intersected.position }
+              { 
+                id: intersected.userData.id, 
+                visible: true, 
+                text: intersected.userData.text, 
+                x, 
+                y, 
+                point: intersected.position 
+              }
             ];
           }
         });
       }
+    } else {
+      // If we didn't click on a point, hide all popups
+      setPopups(prevPopups => prevPopups.map(popup => ({ ...popup, visible: false })));
     }
   };
 
@@ -215,6 +254,14 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
       onTouchMove={onPointerMove}
       onTouchEnd={onPointerUp}
     >
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-bar">
+            <div className="loading-progress" style={{ width: `${loadingProgress}%` }}></div>
+          </div>
+          <div className="loading-text">{loadingProgress}% Loaded</div>
+        </div>
+      )}
       {popups.map((popup, index) => (
         popup.visible && (
           <div
