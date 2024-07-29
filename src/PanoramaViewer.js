@@ -38,13 +38,14 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
       const vector = new THREE.Vector3(popup.point.x, popup.point.y, popup.point.z);
       vector.project(cameraRef.current);
 
-      if (vector.z < 1) {
-        const x = (vector.x * 0.5 + 0.5) * containerRef.current.clientWidth;
-        const y = (vector.y * -0.5 + 0.5) * containerRef.current.clientHeight;
-        return { ...popup, x, y, visible: true };
-      } else {
-        return { ...popup, visible: false };
-      }
+      const x = (vector.x * 0.5 + 0.5) * containerRef.current.clientWidth;
+      const y = (vector.y * -0.5 + 0.5) * containerRef.current.clientHeight;
+
+      const isVisible = vector.z < 1 && 
+                        x >= 0 && x <= containerRef.current.clientWidth &&
+                        y >= 0 && y <= containerRef.current.clientHeight;
+
+      return { ...popup, x, y, visible: isVisible };
     }));
   }, []);
 
@@ -64,11 +65,13 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
     camera.target = new THREE.Vector3(0, 0, 0);
     cameraRef.current = camera;
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
+    renderer.setClearColor(0xffffff);
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
+
 
     const geometry = new THREE.SphereGeometry(500, 60, 40);
     geometry.scale(-1, 1, 1);
@@ -85,7 +88,6 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         const mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-        // Fade in effect
         const fadeIn = () => {
           if (material.opacity < 1) {
             material.opacity += 0.05;
@@ -97,17 +99,33 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         };
         fadeIn();
 
-        // Add interactive points
         interactivePoints.forEach(point => {
-          const pointGeometry = new THREE.SphereGeometry(5, 32, 32);
-          const pointMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-          const pointMesh = new THREE.Mesh(pointGeometry, pointMaterial);
-          pointMesh.position.set(point.x, point.y, point.z);
-          pointMesh.userData = { id: point.id, text: point.text };
-          scene.add(pointMesh);
+          const iconLoader = new THREE.TextureLoader();
+          iconLoader.load(
+            `${process.env.PUBLIC_URL}/${point.icon}`,
+            (iconTexture) => {
+              const spriteMaterial = new THREE.SpriteMaterial({ map: iconTexture });
+              const sprite = new THREE.Sprite(spriteMaterial);
+              const iconSize = point.iconSize || 20;
+              sprite.scale.set(iconSize, iconSize, 1);
+              sprite.position.set(point.x, point.y, point.z);
+              sprite.userData = { id: point.id, text: point.text };
+              scene.add(sprite);
+            },
+            undefined,
+            (error) => {
+              console.error('An error occurred while loading the icon', error);
+              const pointGeometry = new THREE.SphereGeometry(5, 32, 32);
+              const pointMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+              const pointMesh = new THREE.Mesh(pointGeometry, pointMaterial);
+              pointMesh.position.set(point.x, point.y, point.z);
+              pointMesh.userData = { id: point.id, text: point.text };
+              scene.add(pointMesh);
+            }
+          );
         });
 
-        update(); // Initial render
+        update();
         animate();
       },
       (xhr) => {
@@ -134,7 +152,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
       camera.updateProjectionMatrix();
 
       renderer.setSize(width, height);
-      update(); // Re-render after resize
+      update();
     };
 
     window.addEventListener('resize', handleResize);
@@ -173,6 +191,21 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
 
     onPointerDownLon.current = lonRef.current;
     onPointerDownLat.current = latRef.current;
+
+    const container = containerRef.current;
+    const rect = container.getBoundingClientRect();
+
+    mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    raycasterRef.current.setFromCamera(mouseRef.current, cameraRef.current);
+
+    const intersects = raycasterRef.current.intersectObjects(sceneRef.current.children, true);
+
+    if (intersects.length > 0) {
+      const intersectionPoint = intersects[0].point;
+      console.log(`Clicked at: x: ${intersectionPoint.x.toFixed(2)}, y: ${intersectionPoint.y.toFixed(2)}, z: ${intersectionPoint.z.toFixed(2)}`);
+    }
   };
 
   const onPointerMove = (event) => {
@@ -181,13 +214,13 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
     if (isUserInteracting.current) {
       lonRef.current = (onPointerDownMouseX.current - event.clientX) * 0.1 + onPointerDownLon.current;
       latRef.current = (event.clientY - onPointerDownMouseY.current) * 0.1 + onPointerDownLat.current;
-      update(); // Update view while dragging
+      update();
     }
   };
 
   const onPointerUp = () => {
     isUserInteracting.current = false;
-    update(); // Ensure final position is rendered
+    update();
   };
 
   const onClick = (event) => {
@@ -213,7 +246,6 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         setPopups(prevPopups => {
           const existingPopupIndex = prevPopups.findIndex(popup => popup.id === intersected.userData.id);
           if (existingPopupIndex !== -1) {
-            // If the popup exists, we simply toggle its visibility
             const updatedPopups = [...prevPopups];
             updatedPopups[existingPopupIndex] = {
               ...updatedPopups[existingPopupIndex],
@@ -221,7 +253,6 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
             };
             return updatedPopups;
           } else {
-            // If the popup doesn't exist, we create a new one and set it to visible
             return [
               ...prevPopups,
               { 
@@ -237,7 +268,6 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         });
       }
     } else {
-      // If we didn't click on a point, hide all popups
       setPopups(prevPopups => prevPopups.map(popup => ({ ...popup, visible: false })));
     }
   };
@@ -267,7 +297,20 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
           <div
             key={popup.id}
             className="popup"
-            style={{ position: 'absolute', left: popup.x, top: popup.y, transition: 'opacity 0.5s' }}
+            style={{
+              position: 'absolute',
+              left: `${popup.x + 30}px`,
+              top: `${popup.y -30}px`,
+              transform: 'translate(-50%, -100%)',
+              transition: 'opacity 0.5s',
+              maxWidth: '200px',
+              padding: '10px',
+              background: 'rgba(0, 0, 0, 0.7)',
+              color: 'white',
+              borderRadius: '5px',
+              fontSize: '14px',
+              pointerEvents: 'none'
+            }}
           >
             {popup.text}
           </div>

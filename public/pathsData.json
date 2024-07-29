@@ -8,14 +8,13 @@
       {
         "url": "/images/path1_view1.jpg",
         "interactivePoints": [
-          { "id": 1, "x": 100, "y": 0, "z": 100, "text": "Point 1" },
-          { "id": 2, "x": 50, "y": 0, "z": -100, "text": "Point 2" }
+          { "id": 1, "x": 310.53, "y": -235, "z": 281.27, "text": "Point 1", "icon" : "icons/book.svg", "iconSize" : 50}
         ]
       },
       {
         "url": "/images/path1_view2.jpg",
         "interactivePoints": [
-          { "id": 3, "x": -100, "y": 0, "z": 100, "text": "Point 3" }
+          { "id": 2, "x": -100, "y": 0, "z": 100, "text": "Point 3",  "icon" : "icons/book.svg", "iconSize" : 5}
         ]
       },
       "/images/path1_view3.jpg",
@@ -39,7 +38,7 @@
       {
         "url": "/images/path2_view1.jpg",
         "interactivePoints": [
-          { "id": 4, "x": 200, "y": 0, "z": 200, "text": "Point 4" }
+          { "id": 3, "x": 200, "y": 0, "z": 200, "text": "Point 4", "icon" : "icons/book.svg", "iconSize" : 50 }
         ]
       },
       "/images/path2_view2.jpg",
@@ -64,7 +63,7 @@
       {
         "url": "/images/path3_view1.jpg",
         "interactivePoints": [
-          { "id": 5, "x": 300, "y": 0, "z": 300, "text": "Point 5" }
+          { "id": 4, "x": 300, "y": 0, "z": 300, "text": "Point 5" , "iconSize" : 50}
         ]
       },
       "/images/path3_view2.jpg",
