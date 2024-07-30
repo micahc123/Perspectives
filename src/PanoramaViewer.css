@@ -48,10 +48,13 @@
   padding: 10px;
   border-radius: 5px;
   font-family: 'Roboto Mono', monospace;
+  transition: opacity 0.3s;
+  max-width: 200px;
+  font-size: 14px;
 }
 
 .panorama-button {
-  transition: transform 0.3s, background-color 0.3s;
+  transition: transform 0.3s, background-color 0.3s, opacity 0.3s;
   font-family: 'Roboto Mono', monospace;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;

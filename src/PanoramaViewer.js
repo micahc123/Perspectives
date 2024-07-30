@@ -21,6 +21,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
   const [buttons, setButtons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [clickedCoordinates, setClickedCoordinates] = useState(null);
 
   const update = useCallback(() => {
     if (!cameraRef.current || !rendererRef.current || !sceneRef.current) return;
@@ -63,6 +64,27 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
 
       return { ...popup, x, y, visible: isVisible };
     }));
+  }, []);
+
+  const handleSphereClick = useCallback((event) => {
+    if (!sceneRef.current || !cameraRef.current || !rendererRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    mouseRef.current.x = ((event.clientX - rect.left) / containerRef.current.clientWidth) * 2 - 1;
+    mouseRef.current.y = -((event.clientY - rect.top) / containerRef.current.clientHeight) * 2 + 1;
+
+    raycasterRef.current.setFromCamera(mouseRef.current, cameraRef.current);
+
+    const intersects = raycasterRef.current.intersectObjects(sceneRef.current.children);
+
+    if (intersects.length > 0) {
+      const intersectionPoint = intersects[0].point;
+      setClickedCoordinates({
+        x: intersectionPoint.x.toFixed(2),
+        y: intersectionPoint.y.toFixed(2),
+        z: intersectionPoint.z.toFixed(2)
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -185,7 +207,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         scene.remove(scene.children[0]); 
       }
     };
-  }, [imageUrl, interactivePoints, update]);
+  }, [imageUrl, interactivePoints, update, handleSphereClick]);
 
   const onPointerDown = (event) => {
     if (event.isPrimary === false) return;
@@ -233,7 +255,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
     });
   };
 
-  return (
+ return (
     <div
       ref={containerRef}
       className="panorama-container"
@@ -243,6 +265,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
       onTouchStart={onPointerDown}
       onTouchMove={onPointerMove}
       onTouchEnd={onPointerUp}
+      onClick={handleSphereClick}
     >
       {isLoading && (
         <div className="loading-overlay">
@@ -250,6 +273,27 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
             <div className="loading-progress" style={{ width: `${loadingProgress}%` }}></div>
           </div>
           <div className="loading-text">{loadingProgress}% Loaded</div>
+        </div>
+      )}
+      {clickedCoordinates && (
+        <div className="coordinates-debug" style={{
+          position: 'absolute',
+          top: '10px',
+          left: '10px',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          color: 'white',
+          padding: '10px',
+          borderRadius: '5px',
+          fontFamily: '"Roboto Mono", monospace',
+          fontSize: '14px',
+        }}>
+          Clicked coordinates:
+          <br />
+          x: {clickedCoordinates.x}
+          <br />
+          y: {clickedCoordinates.y}
+          <br />
+          z: {clickedCoordinates.z}
         </div>
       )}
       {buttons.map((button) => (
