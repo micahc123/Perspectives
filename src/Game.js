@@ -66,9 +66,9 @@ function Game() {
             onChange={(e) => setSelectedEthnicity(e.target.value)}
           >
             <option value="">All Ethnicities</option>
-            <option value="Ethnicity 1">Asian</option>
-            <option value="Ethnicity 2">Mexican</option>
-            <option value="Ethnicity 3">American</option>
+            <option value="Asian">Asian</option>
+            <option value="Mexican">Mexican</option>
+            <option value="American">American</option>
           </select>
         </div>
       )}
