@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import Confetti from 'react-confetti';
 import './PanoramaViewer.css';
 
 const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
@@ -22,6 +23,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [clickedCoordinates, setClickedCoordinates] = useState(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const update = useCallback(() => {
     if (!cameraRef.current || !rendererRef.current || !sceneRef.current) return;
@@ -240,23 +242,32 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
   const handleButtonClick = (buttonId) => {
     setButtons(prevButtons => prevButtons.filter(button => button.id !== buttonId));
 
-    setPopups(prevPopups => {
-      const clickedButton = buttons.find(b => b.id === buttonId);
-      if (clickedButton) {
-        return [...prevPopups, {
+    const clickedButton = buttons.find(b => b.id === buttonId);
+    if (clickedButton) {
+      setPopups(prevPopups => [
+        ...prevPopups,
+        {
           id: clickedButton.id,
           visible: true,
           text: clickedButton.text,
           x: clickedButton.x,
           y: clickedButton.y,
           point: clickedButton.point
-        }];
+        }
+      ]);
+
+      // Check if the button is an acceptance letter
+      if (clickedButton.buttonText.toLowerCase().includes('acceptance') ||
+          clickedButton.text.toLowerCase().includes('admitted') ||
+          clickedButton.text.toLowerCase().includes('congratulations')) {
+        setShowConfetti(true);
+        // Optionally, set a timer to stop the confetti after a few seconds
+        setTimeout(() => setShowConfetti(false), 5000);
       }
-      return prevPopups;
-    });
+    }
   };
 
- return (
+  return (
     <div
       ref={containerRef}
       className="panorama-container"
@@ -268,6 +279,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
       onTouchEnd={onPointerUp}
       onClick={handleSphereClick}
     >
+      {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}
       {isLoading && (
         <div className="loading-overlay">
           <div className="loading-bar">
