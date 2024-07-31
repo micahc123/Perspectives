@@ -11,11 +11,8 @@ function Path({ name, image, description, ethnicity, animation, onClick }) {
           <p>{description}</p>
           <p><strong>Ethnicity:</strong> {ethnicity}</p>
         </div>
-        <div className="path-image-container">
-          <img src={image} alt={name} className="path-image" />
           <button className="btn btn-secondary btn-lg" onClick={onClick}>Play {name}</button>
         </div>
-      </div>
     </animated.div>
   );
 }

@@ -29,7 +29,7 @@ function HomePage() {
     ref: trailRef,
     from: { opacity: 0, transform: 'translateY(20px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
-    config: { duration: 200 },
+    config: { duration: 50 },
   });
 
   useChain([headingRef, buttonRef, trailRef], [0, 0, 1]);
