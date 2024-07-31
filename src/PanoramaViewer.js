@@ -147,6 +147,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
         const buttonsData = interactivePoints.map(point => ({
           id: point.id,
           text: point.text,
+          buttonText: point.buttonText || 'Click me',
           point: new THREE.Vector3(point.x, point.y, point.z),
           visible: true
         }));

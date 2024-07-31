@@ -8,18 +8,32 @@
       {
         "url": "/images/path1_view1.jpg",
         "interactivePoints": [
-          { "id": 1, "x": -476.02, "y": 130.12, "z": -8.84, "text": "Point 1"},
-          { "id": 2, "x": 467.45, "y": 151.66, "z": 89.66, "text": "Whiteboard"}
+          { "id": 1, "x": 30.85, "y": -56.22, "z": 494.83, "text": "I'm always the first one to arrive at school, if I ever arrive late, I would have to face Juan, the school bully, and I don't want that to happen." },
+          { "id": 2, "x": 467.45, "y": 151.66, "z": 89.66, "text": "It's AP Bio today, my favorite class, I'm planning on majoring in Biology in college, but first I need to do well on the AP Bio exam coming soon, and the Biology olympiad." },
+          { "id": 3, "x": 329.45, "y": -25.60, "z": -370.42, "text": "Ms. Khan usually comes early, and we get to chat about our favorite Biology topics, I was going to talk about the new research paper I'm writing, I hope she likes it, she's the only person I can trust in this school." },
+          { "id": 4, "x": -475, "y": 153, "z": -7.84, "text": "I look at the time, its 7:20 AM, still 30 minutes before the bell rings, I barely slept yesterday, I was cramming for the Biology olympiad, I hope I can qualify, I need to win the scholarship." }
         ]
       },
       {
         "url": "/images/path1_view2.jpg",
         "interactivePoints": [
-          { "id": 3, "x": -100, "y": 0, "z": 100, "text": "Point 3",  "icon" : "icons/book.svg", "iconSize" : 5}
+          { "id": 5, "x": -38.56, "y": -275, "z": 414, "text": "I'm staying at my cousin's house today, it's been over a month where my parents have been homeless, my uncle refuses to help my parents out, he says the most he could do is to take me in, I really hope their okay." },
+          { "id": 6, "x": -454.56, "y": -126, "z": -163, "text": "I'm cramming for the International Biology olympiad, I need to win this scholarship, for me, for my parents, for my future." },
+          { "id": 7, "x": 259, "y": -256, "z": -340.71, "text": "This plant is my favorite, it's the only thing I brought over from my old house, it's the only thing that reminds me of myself, and my love for Biology, I hope it grows well here." }
         ]
       },
-      "/images/path1_view3.jpg",
-      "/images/path1_view4.jpg"
+      {
+        "url": "/images/path1_view3.jpg",
+        "interactivePoints": [
+          { "id": 8, "x": 78.75, "y": -263, "z": 419, "text": "I'm staying at my cousin's house today, it's been over a month where my parents have been homeless, my uncle refuses to help my parents out, he says the most he could do is to take me in, I really hope their okay." },
+          { "id": 9, "x": -64.56, "y": -267, "z": -416.7, "text": "Look at the other desks for the college admission letters" },
+          { "id": 10, "x": 259, "y": -256, "z": -340.71, "text": "This plant is my favorite, it's the only thing I brought over from my old house, it's the only thing that reminds me of myself, and my love for Biology, I hope it grows well here." }
+        ]
+      },
+      {
+        "url": "/images/path1_view4.jpg",
+        "interactivePoints": []
+      }
     ]
   }
 ]
