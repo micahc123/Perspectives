@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import About from './About';
 import HomePage from './Homepage';
@@ -14,7 +14,9 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/game" element={<Game />} /> 
+          <Route path="/game" element={<Game />} />
+          {/* Catch-all route to redirect to the homepage */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </BrowserRouter>
