@@ -1,10 +1,7 @@
 # 🌟 Perspective: Immersive 3D FGLIS Journeys
 
-![Perspective Logo](https://your-image-url.com/perspective-logo.png)
+Perspective is an open-source project showcasing the diverse paths of First-Generation Low-Income Students (FGLIS) through interactive 3D panoramic experiences. Our mission is to inspire, guide, and empower aspiring FGLIS by providing real-life examples and crucial information about college admissions, financial aid, and career trajectories in the United States.
 
-Perspective is a groundbreaking project showcasing the diverse paths of First-Generation Low-Income Students (FGLIS) through interactive 3D panoramic experiences. Our mission is to inspire, guide, and empower aspiring FGLIS by providing real-life examples and crucial information about college admissions, financial aid, and career trajectories in the United States.
-
-![Perspective Demo](https://your-image-url.com/perspective-demo.gif)
 
 ## 🚀 Key Features
 
