@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { useNavigate } from 'react-router-dom';
 import Path from './Path';
 import PathGame from './PathGame';
 import './Game.css';
+import pathsData from './pathsData.json';
 
 function Game() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEthnicity, setSelectedEthnicity] = useState('');
   const [selectedPath, setSelectedPath] = useState(null);
-  const [pathsData, setPathsData] = useState([]);
+  const [paths, setPaths] = useState(pathsData);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch('/pathsData.json')
-      .then(response => response.json())
-      .then(data => setPathsData(data))
-      .catch(error => console.error('Error fetching paths data:', error));
-  }, []);
 
   const titleAnimation = useSpring({
     from: { transform: 'translateY(-100%)', opacity: 0 },
@@ -31,7 +25,7 @@ function Game() {
     config: { duration: 1000 },
   });
 
-  const filteredPaths = pathsData.filter(path => 
+  const filteredPaths = paths.filter(path => 
     path.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (selectedEthnicity === '' || path.ethnicity === selectedEthnicity)
   );

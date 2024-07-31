@@ -1,24 +1,24 @@
 [
   {
     "name": "Carlos",
-    "description": "Carlos is a Mexican FGLI student who is passionate about Biology, he was seperated from his family at just 16 years old, and lived with his cousin for the entirety of high school. He was able to get into Stanford University as a Biology major and is now a Biology scientist at a prestigious research lab. This is his journey.",
+    "description": "Carlos is a Mexican FGLI student who is passionate about Biology, he was separated from his family at just 16 years old, and lived with his cousin for the entirety of high school. He was able to get into Stanford University as a Biology major and is now a Biology scientist at a prestigious research lab. This is his journey.",
     "ethnicity": "Mexican",
     "panoramaImages": [
       {
         "url": "/images/path1_view1.jpg",
         "interactivePoints": [
           { "id": 1, "x": 30.85, "y": -56.22, "z": 494.83, "text": "I'm always the first one to arrive at school, if I ever arrive late, I would have to face Juan, the school bully, and I don't want that to happen.", "buttonText": "Bully" },
-          { "id": 2, "x": 467.45, "y": 151.66, "z": 89.66, "text": "It's AP Bio today, my favorite class, I'm planning on majoring in Biology in college, but first I need to do well on the AP Bio exam coming soon, and the Biology olympiad.", "buttonText": "Whiteboard"  },
-          { "id": 3, "x": 329.45, "y": -25.60, "z": -370.42, "text": "Ms. Khan usually comes early, and we get to chat about our favorite Biology topics, I was going to talk about the new research paper I'm writing, I hope she likes it, she's the only person I can trust in this school.", "buttonText": "Teacher"  },
-          { "id": 4, "x": -475, "y": 153, "z": -7.84, "text": "I look at the time, its 7:20 AM, still 30 minutes before the bell rings, I barely slept yesterday, I was cramming for the Biology olympiad and the PSAT, I need to get the National Merit Scholarship." , "buttonText": "Clock" }
+          { "id": 2, "x": 467.45, "y": 151.66, "z": 89.66, "text": "It's AP Bio today, my favorite class, I'm planning on majoring in Biology in college, but first I need to do well on the AP Bio exam coming soon, and the Biology olympiad.", "buttonText": "Whiteboard" },
+          { "id": 3, "x": 329.45, "y": -25.60, "z": -370.42, "text": "Ms. Khan usually comes early, and we get to chat about our favorite Biology topics, I was going to talk about the new research paper I'm writing, I hope she likes it, she's the only person I can trust in this school.", "buttonText": "Teacher" },
+          { "id": 4, "x": -475, "y": 153, "z": -7.84, "text": "I look at the time, its 7:20 AM, still 30 minutes before the bell rings, I barely slept yesterday, I was cramming for the Biology olympiad and the PSAT, I need to get the National Merit Scholarship.", "buttonText": "Clock" }
         ]
       },
       {
         "url": "/images/path1_view2.jpg",
         "interactivePoints": [
-          { "id": 5, "x": -38.56, "y": -275, "z": 414, "text": "I'm staying at my cousin's house today, it's been over a month where my parents have been homeless, my uncle refuses to help my parents out, he says the most he could do is to take me in, I really hope their okay.", "buttonText": "Bed"  },
-          { "id": 6, "x": -454.56, "y": -126, "z": -163, "text": "I'm cramming for the International Biology olympiad, I need to win this scholarship, for me, for my parents, for my future." , "buttonText": "Laptop" },
-          { "id": 7, "x": 259, "y": -256, "z": -340.71, "text": "This plant is my favorite, it's the only thing I brought over from my old house, it's the only thing that reminds me of myself, and my love for Biology, I hope it grows well here.", "buttonText": "Plant"  }
+          { "id": 5, "x": -38.56, "y": -275, "z": 414, "text": "I'm staying at my cousin's house today, it's been over a month where my parents have been homeless, my uncle refuses to help my parents out, he says the most he could do is to take me in, I really hope their okay.", "buttonText": "Bed" },
+          { "id": 6, "x": -454.56, "y": -126, "z": -163, "text": "I'm cramming for the International Biology olympiad, I need to win this scholarship, for me, for my parents, for my future.", "buttonText": "Laptop" },
+          { "id": 7, "x": 259, "y": -256, "z": -340.71, "text": "This plant is my favorite, it's the only thing I brought over from my old house, it's the only thing that reminds me of myself, and my love for Biology, I hope it grows well here.", "buttonText": "Plant" }
         ]
       },
       {
@@ -28,7 +28,6 @@
           { "id": 9, "x": -64.56, "y": -267, "z": -416.7, "text": "Look at the other desk for the college admission letters" },
           { "id": 10, "x": -70, "y": -263, "z": 419, "text": "Dear Student, you have been rejected from Berkeley. I am sorry to inform you this. Regards, Dean of School", "buttonText": "UC Berkeley Letter" },
           { "id": 11, "x": -387, "y": -44, "z": 310.88, "text": "I was able to go to Stanford for nearly free of charge, this is because I was a National Merit Scholar Finalist, I also was also able to get Free Application for Federal Student Aid (FAFSA)", "buttonText": "Financial Aid" }
-
         ]
       },
       {
