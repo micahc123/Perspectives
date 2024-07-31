@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { useNavigate } from 'react-router-dom';
 import Path from './Path';
 import PathGame from './PathGame';
 import './Game.css';
+import pathsData from './pathsData.json';
 
 function Game() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEthnicity, setSelectedEthnicity] = useState('');
   const [selectedPath, setSelectedPath] = useState(null);
-  const [paths, setPaths] = useState([]);
+  const [paths, setPaths] = useState(pathsData);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch('/path/to/your/pathsData.json')
-      .then(response => response.json())
-      .then(data => setPaths(data))
-      .catch(error => console.error('Error fetching paths data:', error));
-  }, []);
 
   const titleAnimation = useSpring({
     from: { transform: 'translateY(-100%)', opacity: 0 },
