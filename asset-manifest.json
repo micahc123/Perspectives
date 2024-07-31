@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Perspective-EmpowerHacks-2024/static/css/main.2ccdccbf.css",
-    "main.js": "/Perspective-EmpowerHacks-2024/static/js/main.3ce14ff3.js",
+    "main.js": "/Perspective-EmpowerHacks-2024/static/js/main.b9dff23a.js",
     "static/media/path1_view3.jpg": "/Perspective-EmpowerHacks-2024/static/media/path1_view3.15bda0d4341b9991f413.jpg",
     "static/media/path1_view1.jpg": "/Perspective-EmpowerHacks-2024/static/media/path1_view1.6338f76a31326e16f44c.jpg",
     "static/media/path1_view2.jpg": "/Perspective-EmpowerHacks-2024/static/media/path1_view2.e59741fe91590ad699f4.jpg",
     "static/media/path1_view4.jpg": "/Perspective-EmpowerHacks-2024/static/media/path1_view4.e597ea9ba439599b9c1d.jpg",
     "index.html": "/Perspective-EmpowerHacks-2024/index.html",
     "main.2ccdccbf.css.map": "/Perspective-EmpowerHacks-2024/static/css/main.2ccdccbf.css.map",
-    "main.3ce14ff3.js.map": "/Perspective-EmpowerHacks-2024/static/js/main.3ce14ff3.js.map"
+    "main.b9dff23a.js.map": "/Perspective-EmpowerHacks-2024/static/js/main.b9dff23a.js.map"
   },
   "entrypoints": [
     "static/css/main.2ccdccbf.css",
-    "static/js/main.3ce14ff3.js"
+    "static/js/main.b9dff23a.js"
   ]
 }
