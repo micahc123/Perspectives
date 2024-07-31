@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Perspective-EmpowerHacks-2024/static/css/main.2ccdccbf.css",
-    "main.js": "/Perspective-EmpowerHacks-2024/static/js/main.65edfa39.js",
+    "main.js": "/Perspective-EmpowerHacks-2024/static/js/main.6a473d3b.js",
     "index.html": "/Perspective-EmpowerHacks-2024/index.html",
     "main.2ccdccbf.css.map": "/Perspective-EmpowerHacks-2024/static/css/main.2ccdccbf.css.map",
-    "main.65edfa39.js.map": "/Perspective-EmpowerHacks-2024/static/js/main.65edfa39.js.map"
+    "main.6a473d3b.js.map": "/Perspective-EmpowerHacks-2024/static/js/main.6a473d3b.js.map"
   },
   "entrypoints": [
     "static/css/main.2ccdccbf.css",
-    "static/js/main.65edfa39.js"
+    "static/js/main.6a473d3b.js"
   ]
 }
