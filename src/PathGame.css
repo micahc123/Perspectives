@@ -5,65 +5,93 @@ html, body {
   margin: 0;
 }
 
+
 .path-game {
   text-align: center;
   padding: 20px;
   position: relative;
-  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
-  overflow: hidden; /* Prevent internal scrolling */
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-content {
-  margin: 20px 0;
-  height: calc(100vh - 100px); /* Adjust based on your layout */
-  overflow: hidden; /* Prevent internal scrolling */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: calc(100vh - 40px);
+  overflow: hidden;
 }
+
+.panorama-container {
+  width: 90vw; 
+  height: 90vh; 
+  border-radius: 20px;
+
+  overflow: hidden;
+  margin-top: -60px; 
+}
+.panorama-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
 
 .description-text {
   margin-bottom: 20px;
   font-size: 50px;
-  color: #333;
+  color: white;
 }
 
 .navigation-buttons {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  position: relative; /* Change to relative for normal flow */
+  position: relative;
   padding: 0 20px;
 }
 
 .nav-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .btn-next {
-  position: fixed; /* Fix position to bottom right */
-  bottom: 20px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
-  z-index: 1000; /* Ensure button is above other content */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin-right: 70px;
+  z-index: 1000;
 }
 
 .btn-prev {
-  position: fixed; /* Fix position to bottom left */
-  bottom: 20px; /* Adjust as needed */
-  left: 20px; /* Adjust as needed */
-  z-index: 1000; /* Ensure button is above other content */
+  position: fixed; 
+  bottom: 20px; 
+  left: 20px;
+  z-index: 1000;
+  margin-left: 65px;
 }
 
-/* Styles for the pop-down notification */
 .pop-down {
+  color: white;
   position: absolute;
   top: 20px;
   left: 20px;
   width: 300px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  margin-left: 40px;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   opacity: 0;
@@ -80,7 +108,7 @@ html, body {
 .pop-down h3 {
   margin: 0;
   font-size: 18px;
-  color: #333;
+  color: white;
 }
 
 .pop-down hr {
@@ -92,5 +120,8 @@ html, body {
 .pop-down p {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: white;
+}
+.path-game h2 {
+  display: none;
 }

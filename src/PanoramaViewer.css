@@ -6,6 +6,8 @@
   height: 100%;
   margin-bottom: 50px;
   background: transparent;
+  border-radius: 15px;
+  
 }
 
 .loading-overlay {

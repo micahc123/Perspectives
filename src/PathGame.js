@@ -9,10 +9,10 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
   const popDownRef = useRef(null);
 
   const pageDetails = [
-    { title: "School", header: "School View", text: "This is the school view of the path." },
-    { title: "Home", header: "Home View", text: "This is the home view of the path." },
-    { title: "Work", header: "Work View", text: "This is the work view of the path." },
-    { title: "Reflection", header: "Reflection View", text: "This is the reflection of current life." }
+    { title: "School", header: "School View", text: "Drag and click around to learn more about my school life" },
+    { title: "Home", header: "Home View", text: "Drag and click around to learn more about my home life" },
+    { title: "College Admissions Day", header: "CAD View", text: "Drag and click around to open my college letters" },
+    { title: "Work", header: "Work View", text: "Drag and click around to learn more about what I do now" }
   ];
 
   const pages = [
@@ -68,7 +68,6 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
 
   return (
     <div className="path-game">
-      <h2>{pages[pageIndex].title}</h2>
       <div className="page-content">
         {pages[pageIndex].content}
         <div 
@@ -92,9 +91,6 @@ const PathGame = ({ path, onBack, onMainMenu }) => {
           </button>
         )}
       </div>
-      {pageIndex === 0 && (
-        <button onClick={onBack} className="back-button">Back to Paths</button>
-      )}
     </div>
   );
 };
