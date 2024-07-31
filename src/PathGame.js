@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import PanoramaViewer from './PanoramaViewer';
 import './PathGame.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import panorama1 from './images/path1_view1.jpg';
+import panorama2 from './images/path1_view2.jpg';
+import panorama3 from './images/path1_view3.jpg';
+import panorama4 from './images/path1_view4.jpg';
 
 const PathGame = ({ path }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -24,13 +28,20 @@ const PathGame = ({ path }) => {
     navigate('/');
   };
 
+  const panoramaMap = {
+    panorama1: panorama1,
+    panorama2: panorama2,
+    panorama3: panorama3,
+    panorama4: panorama4
+  };
+
   const pages = [
     ...path.panoramaImages.map((image, index) => ({
       title: pageDetails[index]?.title || `View ${index + 1}`,
       content: (
         <PanoramaViewer
-          imageUrl={typeof image === 'string' ? image : image.url}
-          interactivePoints={typeof image === 'string' ? [] : image.interactivePoints || []}
+        imageUrl={panoramaMap[image.key]}
+        interactivePoints={image.interactivePoints || []}
         />
       ),
       header: pageDetails[index]?.header || `View ${index + 1}`,

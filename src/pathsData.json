@@ -5,7 +5,7 @@
     "ethnicity": "Mexican",
     "panoramaImages": [
       {
-        "url": "/images/path1_view1.jpg",
+        "key" : "panorama1",
         "interactivePoints": [
           { "id": 1, "x": 30.85, "y": -56.22, "z": 494.83, "text": "I'm always the first one to arrive at school, if I ever arrive late, I would have to face Juan, the school bully, and I don't want that to happen.", "buttonText": "Bully" },
           { "id": 2, "x": 467.45, "y": 151.66, "z": 89.66, "text": "It's AP Bio today, my favorite class, I'm planning on majoring in Biology in college, but first I need to do well on the AP Bio exam coming soon, and the Biology olympiad.", "buttonText": "Whiteboard" },
@@ -14,6 +14,7 @@
         ]
       },
       {
+        "key" : "panorama2",
         "url": "/images/path1_view2.jpg",
         "interactivePoints": [
           { "id": 5, "x": -38.56, "y": -275, "z": 414, "text": "I'm staying at my cousin's house today, it's been over a month where my parents have been homeless, my uncle refuses to help my parents out, he says the most he could do is to take me in, I really hope their okay.", "buttonText": "Bed" },
@@ -22,6 +23,7 @@
         ]
       },
       {
+        "key" : "panorama3",
         "url": "/images/path1_view3.jpg",
         "interactivePoints": [
           { "id": 8, "x": 78.75, "y": -263, "z": 419, "text": "Dear Student, you have been admitted into Stanford! Congratulations, Dean of School", "buttonText": "Stanford Letter" },
@@ -31,6 +33,7 @@
         ]
       },
       {
+        "key" : "panorama4",
         "url": "/images/path1_view4.jpg",
         "interactivePoints": [
           { "id": 12, "x": -443, "y": -60, "z": -220.88, "text": "I made it, just looking at these tools shows the journey I went through to become a Biology scientist at a prestigious research lab. I was able to get my family out of debt and moved them to an apartment, my hard work really paid off!", "buttonText": "Research Tools" },
