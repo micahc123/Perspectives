@@ -22,7 +22,7 @@ Perspective is an open-source project showcasing the diverse paths of First-Gene
 git clone https://github.com/your-username/perspective.git
 ```
 2. Navigate to the project directory:
-3. 3. Open `index.html` in your preferred web browser to start exploring the 3D panoramic experiences.
+3. Open `index.html` in your preferred web browser to start exploring the 3D panoramic experiences.
 
 ## 🤝 Contributing
 
