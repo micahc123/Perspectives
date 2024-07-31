@@ -41,18 +41,16 @@ We welcome contributions from the community! To add your own story:
 ## 🔮 Future Enhancements
 
 - Cloud database integration for seamless story submissions and updates
-- Mobile app for on-the-go access to inspiring FGLIS journeys
 - AI-powered personalized pathway recommendations
-- Virtual reality (VR) support for an even more immersive experience
 
 ## 🖥️ Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript
+- React.js
 - Three.js (for 3D rendering)
-- Pannellum (for panorama viewer)
-
+  
 ## 📸 Screenshots
 
 <table>
@@ -66,26 +64,11 @@ We welcome contributions from the community! To add your own story:
 </tr>
 </table>
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgements
 
 - Thanks to all the FGLIS who shared their stories and experiences
 - [Three.js](https://threejs.org/) for 3D rendering capabilities
-- [Pannellum](https://pannellum.org/) for the panorama viewer
-- [Font Awesome](https://fontawesome.com/) for icons
 
-## 📞 Contact Us
-
-For questions, suggestions, or support, please reach out to us:
-
-- Email: support@perspective-fglis.com
-- Twitter: [@PerspectiveFGLIS](https://twitter.com/PerspectiveFGLIS)
-- Website: [www.perspective-fglis.com](https://www.perspective-fglis.com)
-
----
 
 <p align="center">
 Made with ❤️ by the Perspective Team
