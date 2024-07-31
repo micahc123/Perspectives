@@ -320,7 +320,7 @@ const PanoramaViewer = ({ imageUrl, interactivePoints }) => {
           }}
           onClick={() => handleButtonClick(button.id)}
         >
-          Click me
+          {button.buttonText}
         </button>
       ))}
       {popups.map((popup) => (
