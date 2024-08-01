@@ -15,7 +15,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<Game />} />
-          {/* Catch-all route to redirect to the homepage */}
+          {}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
